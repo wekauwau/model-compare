@@ -20,8 +20,8 @@ class Car extends Model
         'age',
     ];
 
-    public function price()
+    public function predictedPrice()
     {
-        return $this->hasOne(Price::class);
+        return $this->hasOne(PredictedPrice::class);
     }
 }
