@@ -38,7 +38,7 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->label("Manufacturer / Paint Color")
                     ->wrapHeader()
                     ->getStateUsing(fn ($record) => "
-                            <span class='capitalize'>{$record->manufacturer}</span><br>
+                            <span class='font-semibold capitalize'>{$record->manufacturer}</span><br>
                             <span class='capitalize'>{$record->paint_color}</span>
                         ")
                     ->html()
@@ -55,10 +55,14 @@ class ExampleTable extends Component implements HasTable, HasForms
                 TextColumn::make('odometer')
                     ->numeric()
                     ->alignEnd(),
-                TextColumn::make('transmission'),
-                TextColumn::make('drive'),
-                TextColumn::make('type'),
-                TextColumn::make('age'),
+                TextColumn::make('transmission')
+                    ->extraAttributes(['class' => 'capitalize']),
+                TextColumn::make('drive')
+                    ->extraAttributes(['class' => 'uppercase']),
+                TextColumn::make('type')
+                    ->extraAttributes(['class' => 'capitalize']),
+                TextColumn::make('age')
+                    ->alignEnd(),
                 TextColumn::make('dataset_price')
                     ->label("Price")
                     ->money('USD')

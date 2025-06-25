@@ -9,8 +9,8 @@ export default {
         './vendor/filament/**/*.blade.php',
     ],
     safelist: [
+        'capitalize',
         'text-purple-600',
         'text-red-600',
-        'capitalize',
     ],
 }
