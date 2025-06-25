@@ -29,6 +29,7 @@ class ExampleTable extends Component implements HasTable, HasForms
                 TextColumn::make('cylinders'),
                 TextColumn::make('fuel'),
                 TextColumn::make('odometer')
+                    ->numeric()
                     ->alignEnd(),
                 TextColumn::make('transmission'),
                 TextColumn::make('drive'),
@@ -38,7 +39,7 @@ class ExampleTable extends Component implements HasTable, HasForms
                 TextColumn::make('age'),
                 TextColumn::make('dataset_price')
                     ->label("Price")
-                    ->numeric()
+                    ->money('USD')
                     ->alignEnd()
                     ->weight(FontWeight::SemiBold),
                 TextColumn::make('rf')
@@ -52,7 +53,7 @@ class ExampleTable extends Component implements HasTable, HasForms
 
                         $predicted = number_format($predicted, 2);
                         return <<<HTML
-                            <div class='text-blue-600'>$predicted</div>
+                            <div class='text-blue-600'>$$predicted</div>
                             <div class='text-red-600'>$mae</div>
                             <div class='text-purple-600'>$mape%</div>
                         HTML;
@@ -71,7 +72,7 @@ class ExampleTable extends Component implements HasTable, HasForms
 
                         $predicted = number_format($predicted, 2);
                         return <<<HTML
-                            <div class='text-green-600'>$predicted</div>
+                            <div class='text-green-600'>$$predicted</div>
                             <div class='text-red-600'>$mae</div>
                             <div class='text-purple-600'>$mape%</div>
                         HTML;
@@ -90,7 +91,7 @@ class ExampleTable extends Component implements HasTable, HasForms
 
                         $predicted = number_format($predicted, 2);
                         return <<<HTML
-                            <div class='text-yellow-600'>$predicted</div>
+                            <div class='text-yellow-600'>$$predicted</div>
                             <div class='text-red-600'>$mae</div>
                             <div class='text-purple-600'>$mape%</div>
                         HTML;
