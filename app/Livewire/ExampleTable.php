@@ -47,7 +47,7 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->label("Fuel / Cylinders")
                     ->wrapHeader()
                     ->getStateUsing(fn ($record) => "
-                            <span class='capitalize'>{$record->fuel}</span><br>
+                            <span class='capitalize font-semibold'>{$record->fuel}</span><br>
                             <span>{$record->cylinders}</span>
                         ")
                     ->html()
@@ -55,10 +55,15 @@ class ExampleTable extends Component implements HasTable, HasForms
                 TextColumn::make('odometer')
                     ->numeric()
                     ->alignEnd(),
-                TextColumn::make('transmission')
-                    ->extraAttributes(['class' => 'capitalize']),
-                TextColumn::make('drive')
-                    ->extraAttributes(['class' => 'uppercase']),
+                TextColumn::make('transmission_drive')
+                    ->label("Transmission / Drive")
+                    ->wrapHeader()
+                    ->getStateUsing(fn ($record) => "
+                            <span class='capitalize'>{$record->transmission}</span><br>
+                            <span class='uppercase font-semibold'>{$record->drive}</span>
+                        ")
+                    ->html()
+                    ->wrap(),
                 TextColumn::make('type')
                     ->extraAttributes(['class' => 'capitalize']),
                 TextColumn::make('age')
