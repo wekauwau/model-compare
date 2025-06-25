@@ -12,4 +12,9 @@ class Price extends Model
         'xgb',
         'lgbm',
     ];
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
 }

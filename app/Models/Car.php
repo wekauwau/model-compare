@@ -19,4 +19,9 @@ class Car extends Model
         'state',
         'age',
     ];
+
+    public function price()
+    {
+        return $this->hasOne(Price::class);
+    }
 }
