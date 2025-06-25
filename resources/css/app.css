@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+table.fi-ta-table thead tr {
+    @apply bg-gray-300;
+}
