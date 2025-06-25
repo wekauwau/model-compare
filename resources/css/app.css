@@ -3,6 +3,10 @@
 @tailwind utilities;
 @tailwind variants;
 
+table.fi-ta-table thead tr th span {
+    @apply justify-center;
+}
+
 table.fi-ta-table thead tr {
     @apply bg-gray-200;
 }

@@ -4,7 +4,12 @@ export default {
     presets: [preset],
     content: [
         './app/Filament/**/*.php',
-        './resources/views/**/*.blade.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
         './vendor/filament/**/*.blade.php',
+    ],
+    safelist: [
+        'text-purple-600',
+        'text-red-600',
     ],
 }
