@@ -2,6 +2,8 @@
     <div class="p-6 bg-gray-100 min-h-screen">
         <x-model-cards />
 
+        @livewire('example-table')
+
         <div class="mt-10">
             <h2 class="text-xl font-semibold text-gray-800 mb-4">Sample Prediction Results</h2>
             <div class="overflow-x-auto bg-white rounded-2xl shadow">
