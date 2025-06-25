@@ -1,7 +1,7 @@
 <h1 class="text-2xl font-bold mb-6 text-gray-800">Model Prediction Comparison</h1>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-white rounded-2xl shadow p-6">
+    <div class="bg-blue-50 border-2 border-blue-600 rounded-2xl shadow p-6">
         <h2 class="text-xl font-semibold text-blue-600 mb-2">Random Forest</h2>
         <table class="space-y-1 text-gray-700">
             <tr>
@@ -27,7 +27,7 @@
         </table>
     </div>
 
-    <div class="bg-white rounded-2xl shadow p-6">
+    <div class="bg-green-50 border-2 border-green-600 rounded-2xl shadow p-6">
         <h2 class="text-xl font-semibold text-green-600 mb-2">XGBoost</h2>
         <table class="space-y-1 text-gray-700">
             <tr>
@@ -53,7 +53,7 @@
         </table>
     </div>
 
-    <div class="bg-white rounded-2xl shadow p-6">
+    <div class="bg-yellow-50 border-2 border-yellow-600 rounded-2xl shadow p-6">
         <h2 class="text-xl font-semibold text-yellow-600 mb-2">LightGBM</h2>
         <table class="space-y-1 text-gray-700">
             <tr>
