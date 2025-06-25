@@ -1,5 +1,7 @@
-<div {{ $attributes->merge(['class' => 'mt-5 p-2']) }}>
-    <div class="mb-5 text-xl font-semibold text-blue-600">{{ $title }}</div>
+<div {{ $attributes->merge(['class' => 'mt-5 p-2 border-2']) }}>
+    <div {{ $heading->attributes->merge(['class'=>'mb-5 text-xl font-semibold']) }}>
+        {{ $heading }}
+    </div>
     <table class="text-lg">
         <tr>
             <td>MAE</td>
