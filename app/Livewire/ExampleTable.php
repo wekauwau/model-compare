@@ -6,6 +6,7 @@ use App\Models\Car;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Support\Enums\FontWeight;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -24,18 +25,39 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->striped()
             ->heading("Sample From Dataset")
             ->columns([
-                TextColumn::make('region'),
-                TextColumn::make('manufacturer'),
-                TextColumn::make('cylinders'),
-                TextColumn::make('fuel'),
+                TextColumn::make('region_state')
+                    ->label("Region / State")
+                    ->wrapHeader()
+                    ->getStateUsing(fn ($record) => "
+                            <span class='capitalize'>{$record->region}</span><br>
+                            <span class='font-semibold uppercase'>{$record->state}</span>
+                        ")
+                    ->html()
+                    ->wrap(),
+                TextColumn::make('manufacturer_paint_color')
+                    ->label("Manufacturer / Paint Color")
+                    ->wrapHeader()
+                    ->getStateUsing(fn ($record) => "
+                            <span class='capitalize'>{$record->manufacturer}</span><br>
+                            <span class='capitalize'>{$record->paint_color}</span>
+                        ")
+                    ->html()
+                    ->wrap(),
+                TextColumn::make('fuel_cylinders')
+                    ->label("Fuel / Cylinders")
+                    ->wrapHeader()
+                    ->getStateUsing(fn ($record) => "
+                            <span class='capitalize'>{$record->fuel}</span><br>
+                            <span>{$record->cylinders}</span>
+                        ")
+                    ->html()
+                    ->wrap(),
                 TextColumn::make('odometer')
                     ->numeric()
                     ->alignEnd(),
                 TextColumn::make('transmission'),
                 TextColumn::make('drive'),
                 TextColumn::make('type'),
-                TextColumn::make('paint_color'),
-                TextColumn::make('state'),
                 TextColumn::make('age'),
                 TextColumn::make('dataset_price')
                     ->label("Price")
@@ -101,7 +123,17 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->weight(FontWeight::SemiBold),
             ])
             ->filters([])
-            ->actions([])
+            ->actions([
+                Action::make('viewCalculation')
+                    ->label('Detail')
+                    ->icon('heroicon-o-eye')
+                    ->modalHeading('Calculation Detail')
+                    ->modalContent(fn ($record) => view('filament.modals.view-calculation', [
+                        'car' => $record,
+                    ]))
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false)
+            ])
             ->bulkActions([]);
     }
 

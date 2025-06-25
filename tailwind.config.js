@@ -11,5 +11,6 @@ export default {
     safelist: [
         'text-purple-600',
         'text-red-600',
+        'capitalize',
     ],
 }
