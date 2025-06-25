@@ -129,8 +129,9 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->filters([])
             ->actions([
                 Action::make('viewCalculation')
-                    ->label('Detail')
-                    ->icon('heroicon-o-eye')
+                    ->label('View')
+                    ->button()
+                    ->color('warning')
                     ->modalHeading('Calculation Detail')
                     ->modalContent(fn ($record) => view('filament.modals.view-calculation', [
                         'car' => $record,
