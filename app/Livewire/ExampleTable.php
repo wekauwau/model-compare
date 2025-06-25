@@ -19,7 +19,9 @@ class ExampleTable extends Component implements HasTable, HasForms
     public function table(Table $table): Table
     {
         return $table
-        ->query(Car::query()->with('price'))
+            ->query(Car::query()->with('predictedPrice'))
+            ->striped()
+            ->heading("Example From Dataset")
             ->columns([
                 TextColumn::make('region'),
                 TextColumn::make('manufacturer'),
@@ -32,9 +34,18 @@ class ExampleTable extends Component implements HasTable, HasForms
                 TextColumn::make('paint_color'),
                 TextColumn::make('state'),
                 TextColumn::make('age'),
-                TextColumn::make('price.rf')->label("RF"),
-                TextColumn::make('price.xgb')->label("XGB"),
-                TextColumn::make('price.lgbm')->label("LGBM"),
+                TextColumn::make('predictedPrice.rf')
+                    ->label("RF")
+                    ->extraHeaderAttributes([
+                        'class' => 'text-red-500',
+                    ])
+                    ->color('info'),
+                TextColumn::make('predictedPrice.xgb')
+                    ->label("XGB")
+                    ->color('success'),
+                TextColumn::make('predictedPrice.lgbm')
+                    ->label("LGBM")
+                    ->color('primary'),
             ])
             ->filters([])
             ->actions([])

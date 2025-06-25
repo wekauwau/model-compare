@@ -4,5 +4,5 @@
 @tailwind variants;
 
 table.fi-ta-table thead tr {
-    @apply bg-gray-300;
+    @apply bg-gray-200;
 }
