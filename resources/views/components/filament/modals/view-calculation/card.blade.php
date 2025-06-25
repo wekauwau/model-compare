@@ -1,10 +1,10 @@
 <div {{ $attributes->merge(['class' => 'mt-5 p-2 border-2']) }}>
-    <div {{ $heading->attributes->merge(['class'=>'mb-5 text-xl font-semibold']) }}>
+    <div {{ $heading->attributes->merge(['class' => 'mb-5 text-xl font-semibold']) }}>
         {{ $heading }}
     </div>
     <table class="text-lg">
         <tr>
-            <td>MAE</td>
+            <td>AE</td>
             <td>=</td>
             <td>
                 |A − P|
@@ -28,7 +28,7 @@
                 </span>
             </td>
         <tr>
-            <td>MAPE</td>
+            <td>APE</td>
             <td>=</td>
             <td>
                 |A − P| &divide; A &times; 100%
