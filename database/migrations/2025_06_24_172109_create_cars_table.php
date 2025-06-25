@@ -20,6 +20,8 @@ return new class () extends Migration {
             $table->string('paint_color');
             $table->string('state');
             $table->integer('age');
+            $table->boolean('from_dataset');
+            $table->integer('dataset_price')->nullable();
             $table->timestamps();
         });
     }

@@ -18,6 +18,8 @@ class Car extends Model
         'paint_color',
         'state',
         'age',
+        'from_dataset',
+        'dataset_price',
     ];
 
     public function predictedPrice()
