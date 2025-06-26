@@ -186,6 +186,7 @@ class InputTable extends Component implements HasTable, HasForms
                     ]))
                     ->modalSubmitAction(false)
                     ->modalCancelAction(false)
+                    ->disabled(fn ($record) => is_null($record->dataset_price)),
             ])
             ->bulkActions([
                 BulkAction::make('calculate')
@@ -199,7 +200,7 @@ class InputTable extends Component implements HasTable, HasForms
                         'cars' => $records,
                     ]))
                     ->modalSubmitAction(false)
-                    ->modalCancelAction(false),
+                    ->modalCancelAction(false)
             ]);
     }
 

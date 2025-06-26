@@ -12,6 +12,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
 class ExampleTable extends Component implements HasTable, HasForms
@@ -168,14 +169,12 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->label('Calculate')
                     ->icon('heroicon-o-document-text')
                     ->modalHeading('Calculate MAE, MAPE, and R²')
-                    // ->modalContent(fn (Collection $records) => view('tables.bulk-summary', [
-                    //     'records' => $records,
-                    // ])),
                     ->modalContent(fn ($records) => view('filament.modals.calculate', [
                         'cars' => $records,
                     ]))
                     ->modalSubmitAction(false)
-                    ->modalCancelAction(false),
+                    ->modalCancelAction(false)
+                    ->action(fn (Collection $records) => $records->count() > 1)
             ]);
     }
 
