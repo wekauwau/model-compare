@@ -27,6 +27,7 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->columns([
                 TextColumn::make('region_state')
                     ->label("Region / State")
+                    ->searchable(['region', 'state'])
                     ->wrapHeader()
                     ->getStateUsing(fn ($record) => "
                             <span class='capitalize'>{$record->region}</span><br>
@@ -36,6 +37,7 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->wrap(),
                 TextColumn::make('manufacturer_paint_color')
                     ->label("Manufacturer / Paint Color")
+                    ->searchable(['manufacturer', 'paint_color'])
                     ->wrapHeader()
                     ->getStateUsing(fn ($record) => "
                             <span class='font-semibold capitalize'>{$record->manufacturer}</span><br>
@@ -45,6 +47,7 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->wrap(),
                 TextColumn::make('fuel_cylinders')
                     ->label("Fuel / Cylinders")
+                    ->searchable(['fuel', 'cylinders'])
                     ->wrapHeader()
                     ->getStateUsing(fn ($record) => "
                             <span class='capitalize font-semibold'>{$record->fuel}</span><br>
@@ -53,10 +56,12 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->html()
                     ->wrap(),
                 TextColumn::make('odometer')
+                    ->searchable()
                     ->numeric()
                     ->alignEnd(),
                 TextColumn::make('transmission_drive')
                     ->label("Transmission / Drive")
+                    ->searchable(['transmission', 'drive'])
                     ->wrapHeader()
                     ->getStateUsing(fn ($record) => "
                             <span class='capitalize'>{$record->transmission}</span><br>
@@ -65,16 +70,20 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->html()
                     ->wrap(),
                 TextColumn::make('type')
+                    ->searchable()
                     ->extraAttributes(['class' => 'capitalize']),
                 TextColumn::make('age')
+                    ->searchable()
                     ->alignEnd(),
                 TextColumn::make('dataset_price')
                     ->label("Price")
+                    ->searchable()
                     ->money('USD')
                     ->alignEnd()
                     ->weight(FontWeight::SemiBold),
-                TextColumn::make('rf')
+                TextColumn::make('predictedPrice.rf')
                     ->label("RF")
+                    ->searchable()
                     ->getStateUsing(function ($record) {
                         // Safely handle nulls and object access
                         $actual = $record->dataset_price ?? 0;
@@ -92,8 +101,9 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->html()
                     ->alignEnd()
                     ->weight(FontWeight::SemiBold),
-                TextColumn::make('xgb')
+                TextColumn::make('predictedPrice.xgb')
                     ->label("XGB")
+                    ->searchable()
                     ->getStateUsing(function ($record) {
                         // Safely handle nulls and object access
                         $actual = $record->dataset_price ?? 0;
@@ -111,8 +121,9 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->html()
                     ->alignEnd()
                     ->weight(FontWeight::SemiBold),
-                TextColumn::make('lgbm')
+                TextColumn::make('predictedPrice.lgbm')
                     ->label("LGBM")
+                    ->searchable()
                     ->getStateUsing(function ($record) {
                         // Safely handle nulls and object access
                         $actual = $record->dataset_price ?? 0;
