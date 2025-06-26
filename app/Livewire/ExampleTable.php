@@ -147,6 +147,7 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->actions([
                 Action::make('viewCalculation')
                     ->label('View')
+                    ->icon('heroicon-o-eye')
                     ->button()
                     ->color('warning')
                     ->modalHeading('Calculation Detail')
