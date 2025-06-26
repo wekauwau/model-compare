@@ -23,9 +23,11 @@ class ExampleTable extends Component implements HasTable, HasForms
     {
         return $table
             ->query(
-                Car::query()->when(true, function ($query) {
-                    $query->where('from_dataset', true)->with('predictedPrice');
-                })
+                Car::query()
+                    ->when(true, function ($query) {
+                        $query->where('from_dataset', true)->with('predictedPrice');
+                    })
+                    ->orderByDesc('id')
             )
             ->striped()
             ->heading("Sample From Dataset")
