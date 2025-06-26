@@ -25,9 +25,15 @@ class CarSeeder extends Seeder
             ['mansfield', 'toyota', '4', 'gas', 49558, 'automatic', 'fwd', 'sedan', 'blue', 'oh', 4, true, 16995],
             ['portland', 'ford', '8', 'diesel', 169147, 'manual', '4wd', 'pickup', 'blue', 'or', 14, true, 14995],
             ['roseburg', 'toyota', '4', 'gas', 60423, 'automatic', 'fwd', 'sedan', 'blue', 'or', 5, true, 15990],
+
             ['chico', 'bmw', '8', 'hybrid', 5950, 'manual', 'rwd', 'sedan', 'white', 'il', 4, false, null],
             ['salina', 'rover', '4', 'diesel', 10500, 'manual', '4wd', 'offroad', 'black', 'ca', 7, false, null],
-            ['shreveport', 'mercedes-benz', '4', 'gas', 3840, 'automatic', 'fwd', 'sedan', 'white', 'ga', 4, false, null],
+            ['shreveport', 'mercedes-benz', '4', 'gas', 3840, 'automatic', 'fwd', 'sedan', 'white', 'ga', 4, false, 22000],
+            ['new orleans', 'buick', '12', 'electric', 6049, 'automatic', '4wd', 'coupe', 'purple', 'va', 6, false, 33900],
+            ['kirksville', 'subaru', '8', 'gas', 7916, 'manual', 'fwd', 'sedan', 'black', 'md', 7, false, null],
+            ['watertown', 'mercedes-benz', '4', 'gas', 10500, 'automatic', 'rwd', 'sedan', 'black', 'ri', 9, false, 15050],
+            ['parkersburg-marietta', 'lexus', '8', 'gas', 10729, 'automatic', 'fwd', 'SUV', 'white', 'nd', 8, false, 25950],
+            ['shreveport', 'kia', '4', 'electric', 14684, 'manual', '4wd', 'coupe', 'blue', 'mn', 7, false, null],
         ];
 
         foreach ($data as $record) {
@@ -48,6 +54,6 @@ class CarSeeder extends Seeder
             ]);
         }
 
-        Car::factory(20)->create();
+        // Car::factory(20)->create();
     }
 }

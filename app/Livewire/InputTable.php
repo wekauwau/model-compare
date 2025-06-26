@@ -23,12 +23,14 @@ class InputTable extends Component implements HasTable, HasForms
     {
         return $table
             ->query(
-                Car::query()->when(true, function ($query) {
-                    $query->where('from_dataset', false)->with('predictedPrice');
-                })
+                Car::query()
+                    ->when(true, function ($query) {
+                        $query->where('from_dataset', false)->with('predictedPrice');
+                    })
+                    ->orderByDesc('id')
             )
             ->striped()
-            ->heading("Sample From Dataset")
+            ->heading("Input From Users")
             ->columns([
                 TextColumn::make('region_state')
                     ->label("Region / State")
@@ -81,7 +83,7 @@ class InputTable extends Component implements HasTable, HasForms
                     ->searchable()
                     ->alignEnd(),
                 TextColumn::make('dataset_price')
-                    ->label("Price")
+                    ->label("Price (optional)")
                     ->searchable()
                     ->money('USD')
                     ->alignEnd()
@@ -90,6 +92,14 @@ class InputTable extends Component implements HasTable, HasForms
                     ->label("RF")
                     ->searchable()
                     ->getStateUsing(function ($record) {
+                        if (is_null($record->dataset_price)) {
+                            $predicted = number_format($record->predictedPrice->rf ?? 0, 2);
+
+                            return <<<HTML
+                                <div class='text-blue-600'>$$predicted</div>
+                            HTML;
+                        }
+
                         // Safely handle nulls and object access
                         $actual = $record->dataset_price ?? 0;
                         $predicted = $record->predictedPrice->rf ?? 0;
@@ -110,6 +120,14 @@ class InputTable extends Component implements HasTable, HasForms
                     ->label("XGB")
                     ->searchable()
                     ->getStateUsing(function ($record) {
+                        if (is_null($record->dataset_price)) {
+                            $predicted = number_format($record->predictedPrice->xgb ?? 0, 2);
+
+                            return <<<HTML
+                                <div class='text-green-600'>$$predicted</div>
+                            HTML;
+                        }
+
                         // Safely handle nulls and object access
                         $actual = $record->dataset_price ?? 0;
                         $predicted = $record->predictedPrice->xgb ?? 0;
@@ -130,6 +148,14 @@ class InputTable extends Component implements HasTable, HasForms
                     ->label("LGBM")
                     ->searchable()
                     ->getStateUsing(function ($record) {
+                        if (is_null($record->dataset_price)) {
+                            $predicted = number_format($record->predictedPrice->lgbm ?? 0, 2);
+
+                            return <<<HTML
+                                <div class='text-yellow-600'>$$predicted</div>
+                            HTML;
+                        }
+
                         // Safely handle nulls and object access
                         $actual = $record->dataset_price ?? 0;
                         $predicted = $record->predictedPrice->lgbm ?? 0;
