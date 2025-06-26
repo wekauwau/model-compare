@@ -172,38 +172,35 @@
             <td>R²</td>
             <td>=</td>
             <td>
-                1 - (Σ(y<sub>i</sub> − ŷ<sub>i</sub>)<sup>2</sup> / Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
+                1 - (Σ(y<sub>i</sub> − ŷ<sub>i</sub>)<sup>2</sup> ÷ Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
             </td>
         </tr>
         <tr>
             <td></td>
             <td>=</td>
             <td>
-                1 - (<span class="font-semibold">{!! $r2_rf_left_step_1 !!}</span> /
-                Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
+                1 - (<span class="font-semibold">{!! $r2_rf_left_step_1 !!}</span> ÷ Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
             </td>
         </tr>
         <tr>
             <td></td>
             <td>=</td>
             <td>
-                1 - (<span class="font-semibold">{!! $r2_rf_left_step_2 !!}</span> /
-                Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
+                1 - (<span class="font-semibold">{!! $r2_rf_left_step_2 !!}</span> ÷ Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
             </td>
         </tr>
         <tr>
             <td></td>
             <td>=</td>
             <td>
-                1 - (<span class="font-semibold">{{ $r2_rf_left_step_3 }}</span> /
-                Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
+                1 - (<span class="font-semibold">{{ $r2_rf_left_step_3 }}</span> ÷ Σ(y<sub>i</sub> − ȳ)<sup>2</sup>)
             </td>
         </tr>
         <tr>
             <td></td>
             <td>=</td>
             <td>
-                1 - ({{ number_format($r2_rf_left_step_4, 2) }} / <span
+                1 - ({{ number_format($r2_rf_left_step_4, 2) }} ÷ <span
                     class="font-semibold">{!! $r2_rf_right_step_1 !!}</span>)
             </td>
         </tr>
@@ -211,7 +208,7 @@
             <td></td>
             <td>=</td>
             <td>
-                1 - ({{ number_format($r2_rf_left_step_4, 2) }} / <span
+                1 - ({{ number_format($r2_rf_left_step_4, 2) }} ÷ <span
                     class="font-semibold">{!! $r2_rf_right_step_2 !!}</span>)
             </td>
         </tr>
@@ -219,7 +216,7 @@
             <td></td>
             <td>=</td>
             <td>
-                1 - ({{ number_format($r2_rf_left_step_4, 2) }} / <span
+                1 - ({{ number_format($r2_rf_left_step_4, 2) }} ÷ <span
                     class="font-semibold">{{ $r2_rf_right_step_3 }}</span>)
             </td>
         </tr>
@@ -227,7 +224,7 @@
             <td></td>
             <td>=</td>
             <td>
-                1 - <span class="font-semibold">({{ number_format($r2_rf_left_step_4, 2) }} /
+                1 - <span class="font-semibold">({{ number_format($r2_rf_left_step_4, 2) }} ÷
                     {{ $r2_rf_right_step_4 }})</span>
             </td>
         </tr>
