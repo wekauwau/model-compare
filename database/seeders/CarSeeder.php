@@ -25,6 +25,9 @@ class CarSeeder extends Seeder
             ['mansfield', 'toyota', '4', 'gas', 49558, 'automatic', 'fwd', 'sedan', 'blue', 'oh', 4, true, 16995],
             ['portland', 'ford', '8', 'diesel', 169147, 'manual', '4wd', 'pickup', 'blue', 'or', 14, true, 14995],
             ['roseburg', 'toyota', '4', 'gas', 60423, 'automatic', 'fwd', 'sedan', 'blue', 'or', 5, true, 15990],
+            ['chico', 'bmw', '8', 'hybrid', 5950, 'manual', 'rwd', 'sedan', 'white', 'il', 4, false, null],
+            ['salina', 'rover', '4', 'diesel', 10500, 'manual', '4wd', 'offroad', 'black', 'ca', 7, false, null],
+            ['shreveport', 'mercedes-benz', '4', 'gas', 3840, 'automatic', 'fwd', 'sedan', 'white', 'ga', 4, false, null],
         ];
 
         foreach ($data as $record) {
@@ -44,5 +47,7 @@ class CarSeeder extends Seeder
                 'dataset_price' => $record[12],
             ]);
         }
+
+        Car::factory(20)->create();
     }
 }

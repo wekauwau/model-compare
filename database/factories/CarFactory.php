@@ -1,0 +1,48 @@
+<?php
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Arr;
+
+class CarFactory extends Factory
+{
+    public function definition(): array
+    {
+        $regions = [
+            "auburn", "birmingham", "dothan", "florence / muscle shoals", "gadsden-anniston", "huntsville / decatur", "mobile", "montgomery", "tuscaloosa", "anchorage / mat-su", "fairbanks", "kenai peninsula", "other", "flagstaff / sedona", "mohave county", "phoenix", "prescott", "sierra vista", "tucson", "yuma", "fayetteville", "fort smith", "jonesboro", "little rock", "texarkana", "bakersfield", "chico", "fresno / madera", "gold country", "hanford-corcoran", "humboldt county", "inland empire", "los angeles", "mendocino county", "merced", "modesto", "monterey bay", "orange county", "palm springs", "redding", "reno / tahoe", "sacramento", "san diego", "san luis obispo", "santa barbara", "santa maria", "SF bay area", "stockton", "susanville", "ventura county", "visalia-tulare", "yuba-sutter", "boulder", "colorado springs", "denver", "fort collins / north CO", "high rockies", "pueblo", "western slope", "eastern CT", "hartford", "new haven", "northwest CT", "washington, DC", "delaware", "daytona beach", "florida keys", "ft myers / SW florida", "gainesville", "heartland florida", "jacksonville", "lakeland", "north central FL", "ocala", "okaloosa / walton", "orlando", "panama city", "pensacola", "sarasota-bradenton", "south florida", "space coast", "st augustine", "tallahassee", "tampa bay area", "treasure coast", "albany", "athens", "atlanta", "augusta", "brunswick", "columbus", "macon / warner robins", "northwest GA", "savannah / hinesville", "statesboro", "valdosta", "hawaii", "boise", "east idaho", "lewiston / clarkston", "pullman / moscow", "spokane / coeur d'alene", "twin falls", "bloomington-normal", "champaign urbana", "chicago", "decatur", "la salle co", "mattoon-charleston", "peoria", "quad cities, IA/IL", "rockford", "southern illinois", "springfield", "st louis, MO", "bloomington", "evansville", "fort wayne", "indianapolis", "kokomo", "lafayette / west lafayette", "muncie / anderson", "richmond", "south bend / michiana", "terre haute", "ames", "cedar rapids", "des moines", "dubuque", "iowa city", "mason city", "omaha / council bluffs", "sioux city", "waterloo / cedar falls", "kansas city, MO", "lawrence", "manhattan", "northwest KS", "salina", "topeka", "wichita", "bowling green", "eastern kentucky", "lexington", "louisville", "owensboro", "western KY", "baton rouge", "central louisiana", "lafayette", "lake charles", "monroe", "new orleans", "shreveport", "maine", "annapolis", "baltimore", "cumberland valley", "eastern shore", "frederick", "southern maryland", "western maryland", "boston", "cape cod / islands", "south coast", "western massachusetts", "worcester / central MA", "ann arbor", "battle creek", "central michigan", "detroit metro", "flint", "grand rapids", "holland", "jackson", "kalamazoo", "lansing", "muskegon", "northern michigan", "port huron", "saginaw-midland-baycity", "southwest michigan", "the thumb", "upper peninsula", "bemidji", "brainerd", "duluth / superior", "fargo / moorhead", "mankato", "minneapolis / st paul", "rochester", "st cloud", "gulfport / biloxi", "north mississippi", "columbia / jeff city", "joplin", "kirksville", "lake of the ozarks", "southeast missouri", "st joseph", "billings", "bozeman", "butte", "great falls", "helena", "kalispell", "missoula", "asheville", "boone", "charlotte", "eastern NC", "greensboro", "hickory / lenoir", "raleigh / durham / CH", "wilmington", "winston-salem", "grand island", "lincoln", "las vegas", "central NJ", "jersey shore", "north jersey", "south jersey", "albuquerque", "las cruces", "santa fe / taos", "binghamton", "buffalo", "catskills", "chautauqua", "elmira-corning", "finger lakes", "glens falls", "hudson valley", "ithaca", "long island", "new york city", "plattsburgh-adirondacks", "syracuse", "twin tiers NY/PA", "utica-rome-oneida", "watertown", "new hampshire", "grand forks", "akron / canton", "ashtabula", "chillicothe", "cincinnati", "cleveland", "dayton / springfield", "lima / findlay", "mansfield", "northern panhandle", "parkersburg-marietta", "sandusky", "toledo", "tuscarawas co", "youngstown", "zanesville / cambridge", "lawton", "northwest OK", "oklahoma city", "stillwater", "texoma", "tulsa", "bend", "corvallis/albany", "east oregon", "eugene", "klamath falls", "medford-ashland", "oregon coast", "portland", "roseburg", "salem", "altoona-johnstown", "erie", "harrisburg", "lancaster", "lehigh valley", "meadville", "philadelphia", "pittsburgh", "poconos", "reading", "scranton / wilkes-barre", "state college", "williamsport", "york", "rhode island", "charleston", "columbia", "florence", "greenville / upstate", "hilton head", "myrtle beach", "rapid city / west SD", "sioux falls / SE SD", "chattanooga", "clarksville", "cookeville", "knoxville", "memphis", "nashville", "tri-cities", "abilene", "amarillo", "austin", "beaumont / port arthur", "brownsville", "college station", "corpus christi", "dallas / fort worth", "el paso", "galveston", "houston", "killeen / temple / ft hood", "laredo", "lubbock", "mcallen / edinburg", "odessa / midland", "san angelo", "san antonio", "san marcos", "tyler / east TX", "victoria", "waco", "wichita falls", "logan", "salt lake city", "st george", "vermont", "charlottesville", "danville", "fredericksburg", "harrisonburg", "lynchburg", "new river valley", "norfolk / hampton roads", "roanoke", "southwest VA", "winchester", "bellingham", "kennewick-pasco-richland", "moses lake", "olympic peninsula", "seattle-tacoma", "skagit / island / SJI", "wenatchee", "yakima", "eastern panhandle", "morgantown", "appleton-oshkosh-FDL", "eau claire", "green bay", "janesville", "kenosha-racine", "la crosse", "madison", "milwaukee", "northern WI", "sheboygan", "wausau", "wyoming"
+        ];
+        $manufacturers = [
+            "gmc", "chevrolet", "toyota", "ford", "jeep", "nissan", "ram", "cadillac", "honda", "dodge", "lexus", "jaguar", "chrysler", "volvo", "audi", "infiniti", "lincoln", "other", "subaru", "acura", "hyundai", "mercedes-benz", "bmw", "mitsubishi", "volkswagen", "mazda", "porsche", "kia", "buick", "rover", "mini", "pontiac"
+        ];
+        $cylinders = ["8", "6", "4", "5", "10", "other", "3", "12"];
+        $fuels = ["gas", "other", "diesel", "hybrid", "electric"];
+        $transmissions = ["other", "automatic", "manual"];
+        $drives = ["rwd", "4wd", "fwd"];
+        $types = [
+            "pickup", "truck", "other", "SUV", "hatchback", "mini-van", "sedan", "offroad", "coupe", "convertible", "wagon", "van", "bus"
+        ];
+        $paint_colors = [
+            "white", "blue", "red", "black", "silver", "grey", "brown", "orange", "green", "yellow", "custom", "purple"
+        ];
+        $states = [
+            "al", "ak", "az", "ar", "ca", "co", "ct", "dc", "de", "fl", "ga", "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md", "ma", "mi", "mn", "ms", "mo", "mt", "nc", "ne", "nv", "nj", "nm", "ny", "nh", "nd", "oh", "ok", "or", "pa", "ri", "sc", "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"
+        ];
+
+        return [
+            'region' => Arr::random($regions),
+            'manufacturer' => Arr::random($manufacturers),
+            'cylinders' => Arr::random($cylinders),
+            'fuel' => Arr::random($fuels),
+            'odometer' => fake()->numberBetween(5000, 15000),
+            'transmission' => Arr::random($transmissions),
+            'drive' => Arr::random($drives),
+            'type' => Arr::random($types),
+            'paint_color' => Arr::random($paint_colors),
+            'state' => Arr::random($states),
+            'age' => fake()->numberBetween(2, 9),
+            'from_dataset' => false,
+            'dataset_price' => null,
+        ];
+    }
+}
