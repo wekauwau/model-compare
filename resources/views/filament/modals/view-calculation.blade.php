@@ -21,8 +21,8 @@
 @endphp
 
 <div>
-    <div>A = Actual price</div>
-    <div>P = Predicted price</div>
+    <div><span class="font-semibold">A</span> = Actual price</div>
+    <div><span class="font-semibold">P</span> = Predicted price</div>
 
     <x-filament.modals.view-calculation.card :$actual :predicted="$predicted_rf" :mae="$mae_rf" :mape-step-1="$mae_rf"
         :mape_step_2="$mape_rf_step_2" :mape="$mape_rf" class="bg-blue-50 border-blue-600">
