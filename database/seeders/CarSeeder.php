@@ -20,6 +20,11 @@ class CarSeeder extends Seeder
             ['chicago', 'toyota', '6', 'gas', 87862, 'automatic', 'fwd', 'other', 'custom', 'il', 9, true, 13500],
             ['indianapolis', 'chevrolet', '8', 'gas', 43475, 'manual', 'rwd', 'convertible', 'silver', 'in', 16, true, 24900],
             ['winchester', 'volkswagen', '4', 'diesel', 83000, 'automatic', 'fwd', 'sedan', 'silver', 'va', 8, true, 10900],
+            ['jackson', 'ford', '8', 'gas', 121079, 'automatic', '4wd', 'truck', 'yellow', 'tn', 8, true, 19873],
+            ['poconos', 'jeep', '4', 'gas', 86241, 'automatic', '4wd', 'SUV', 'black', 'pa', 5, true, 14995],
+            ['mansfield', 'toyota', '4', 'gas', 49558, 'automatic', 'fwd', 'sedan', 'blue', 'oh', 4, true, 16995],
+            ['portland', 'ford', '8', 'diesel', 169147, 'manual', '4wd', 'pickup', 'blue', 'or', 14, true, 14995],
+            ['roseburg', 'toyota', '4', 'gas', 60423, 'automatic', 'fwd', 'sedan', 'blue', 'or', 5, true, 15990],
         ];
 
         foreach ($data as $record) {
