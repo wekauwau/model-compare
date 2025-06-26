@@ -31,7 +31,7 @@
             <td>APE</td>
             <td>=</td>
             <td>
-                |A − P| &divide; A &times; 100%
+                |A − P| ÷ A × 100%
             </td>
         </tr>
         <tr>
@@ -41,9 +41,9 @@
                 <span class="font-semibold">
                     |{{ number_format($actual, 2) }} − {{ number_format($predicted, 2) }}|
                 </span>
-                &divide;
+                ÷
                 {{ number_format($actual, 2) }}
-                &times;
+                ×
                 100%
             </td>
         </tr>
@@ -51,17 +51,20 @@
             <td></td>
             <td>=</td>
             <td>
-                <span class="font-semibold"><span class="text-red-600">{{ number_format($mapeStep1, 2) }}</span>
-                    &divide;
-                    {{ number_format($actual, 2) }}</span> &times;
-                100%
+                <span class="font-semibold">
+                    <span class="text-red-600">
+                        {{ number_format($mapeStep1, 2) }}
+                    </span>
+                    ÷
+                    {{ number_format($actual, 2) }}
+                </span> × 100%
             </td>
         </tr>
         <tr>
             <td></td>
             <td>=</td>
             <td>
-                <span class="font-semibold">{{ number_format($mapeStep2, 4) }} &times; 100%</span>
+                <span class="font-semibold">{{ number_format($mapeStep2, 4) }} × 100%</span>
             </td>
         </tr>
         <tr>
