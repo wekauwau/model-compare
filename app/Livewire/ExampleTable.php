@@ -7,6 +7,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -155,7 +156,20 @@ class ExampleTable extends Component implements HasTable, HasForms
                     ->modalSubmitAction(false)
                     ->modalCancelAction(false)
             ])
-            ->bulkActions([]);
+            ->bulkActions([
+                BulkAction::make('calculate')
+                    ->label('Calculate')
+                    ->icon('heroicon-o-document-text')
+                    ->modalHeading('Calculate MAE, MAPE, and R²')
+                    // ->modalContent(fn (Collection $records) => view('tables.bulk-summary', [
+                    //     'records' => $records,
+                    // ])),
+                    ->modalContent(fn ($records) => view('filament.modals.calculate', [
+                        'cars' => $records,
+                    ]))
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false),
+            ]);
     }
 
     public function render()

@@ -10,3 +10,7 @@ table.fi-ta-table thead tr th span {
 table.fi-ta-table thead tr {
     @apply bg-gray-200;
 }
+
+table td {
+    @apply align-top;
+}
