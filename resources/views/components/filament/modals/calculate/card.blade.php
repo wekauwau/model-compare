@@ -128,14 +128,14 @@
             <td></td>
             <td>=</td>
             <td>
-                1 - <span class="font-semibold">{{ number_format($r2LeftRight, 4) }}</span>
+                1 - <span class="font-semibold">{{ number_format($r2LeftRight, 2) }}</span>
             </td>
         </tr>
         <tr>
             <td></td>
             <td>=</td>
             <td>
-                <span class="font-semibold text-cyan-600">{{ number_format($r2, 4) }}</span>
+                <span class="font-semibold text-cyan-600">{{ number_format($r2, 2) }}</span>
             </td>
         </tr>
     </table>
