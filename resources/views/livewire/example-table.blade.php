@@ -1,4 +1,4 @@
-<div class="mt-10">
+<div>
     @include('filament.tables.header')
     {{ $this->table }}
 </div>
