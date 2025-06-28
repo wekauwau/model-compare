@@ -24,7 +24,7 @@
             // Avoid division by zero
             if ($actual == 0) {
                 return [
-                    'expression' => '|0 - ' . number_format($pred, 2) . '| / 0',
+                    'expression' => '|0 - ' . number_format($pred, 2) . '| ÷ 0',
                     'value' => 0,
                 ];
             }
@@ -37,7 +37,7 @@
                     number_format($actual, 2) .
                     ' - ' .
                     number_format($pred, 2) .
-                    '| / ' .
+                    '| ÷ ' .
                     number_format($actual, 2) .
                     ')',
                 'value' => $errors,
@@ -122,7 +122,7 @@
             // Avoid division by zero
             if ($actual == 0) {
                 return [
-                    'expression' => '|0 - ' . number_format($pred, 2) . '| / 0',
+                    'expression' => '|0 - ' . number_format($pred, 2) . '| ÷ 0',
                     'value' => 0,
                 ];
             }
@@ -135,7 +135,7 @@
                     number_format($actual, 2) .
                     ' - ' .
                     number_format($pred, 2) .
-                    '| / ' .
+                    '| ÷ ' .
                     number_format($actual, 2) .
                     ')',
                 'value' => $errors,
@@ -220,7 +220,7 @@
             // Avoid division by zero
             if ($actual == 0) {
                 return [
-                    'expression' => '|0 - ' . number_format($pred, 2) . '| / 0',
+                    'expression' => '|0 - ' . number_format($pred, 2) . '| ÷ 0',
                     'value' => 0,
                 ];
             }
@@ -233,7 +233,7 @@
                     number_format($actual, 2) .
                     ' - ' .
                     number_format($pred, 2) .
-                    '| / ' .
+                    '| ÷ ' .
                     number_format($actual, 2) .
                     ')',
                 'value' => $errors,
