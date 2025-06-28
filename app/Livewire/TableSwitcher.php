@@ -6,7 +6,7 @@ use Livewire\Component;
 
 class TableSwitcher extends Component
 {
-    public string $mode = 'sample';
+    public string $mode = 'input';
 
     public function setMode($value)
     {
