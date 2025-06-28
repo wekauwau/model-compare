@@ -10,6 +10,7 @@ export default {
     ],
     safelist: [
         'capitalize',
+        'uppercase',
         'text-purple-600',
         'text-red-600',
     ],
