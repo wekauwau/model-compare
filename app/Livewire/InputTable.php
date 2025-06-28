@@ -210,6 +210,7 @@ class InputTable extends Component implements HasTable, HasForms
             ->query($this->getQuery())
             ->heading("Input From Users")
             ->striped()
+            ->checkIfRecordIsSelectableUsing(fn ($record) => !is_null($record->dataset_price))
             ->columns($this->getColumns())
             ->filters([])
             ->actions($this->getActions())
