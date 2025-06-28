@@ -14,3 +14,24 @@ table.fi-ta-table thead tr {
 table td {
     @apply align-top;
 }
+
+/* vertical line */
+table.fi-ta-table thead th {
+    @apply border-l border-gray-300;
+}
+table.fi-ta-table thead th:last-child {
+    @apply border-r border-gray-300;
+}
+table.fi-ta-table tr td {
+    @apply border-l border-gray-300;
+}
+table.fi-ta-table tr td:last-child {
+    @apply border-r border-gray-300;
+}
+/* horizontal line */
+table.fi-ta-table thead th {
+    @apply border-t border-b border-gray-300;
+}
+table.fi-ta-table tr td {
+    @apply border-b border-gray-300;
+}
