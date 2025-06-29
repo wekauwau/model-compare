@@ -12,7 +12,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 
 class ExampleTable extends Component implements HasTable, HasForms
@@ -152,11 +151,11 @@ class ExampleTable extends Component implements HasTable, HasForms
     {
         return [
             Action::make('viewCalculation')
-                ->label('View')
+                ->label('Detail')
                 ->button()
                 ->color('warning')
                 ->icon('heroicon-o-eye')
-                ->modalHeading('Calculation Detail')
+                ->modalHeading('Detail perhitungan')
                 ->modalContent(fn ($record) => view('filament.modals.view-calculation', [
                     'car' => $record,
                 ]))
@@ -184,7 +183,7 @@ class ExampleTable extends Component implements HasTable, HasForms
     {
         return $table
             ->query($this->getQuery())
-            ->heading("Sample From Dataset")
+            ->heading("Sampel dari dataset")
             ->striped()
             ->columns($this->getColumns())
             ->filters([])

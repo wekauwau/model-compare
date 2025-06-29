@@ -7,7 +7,7 @@
             <td>MAE</td>
             <td>=</td>
             <td>
-                (1 ÷ n) × Σ(i=1 to n) |y<sub>i</sub> − ŷ<sub>i</sub>|
+                (1 ÷ n) × Σ|y<sub>i</sub> − ŷ<sub>i</sub>|
             </td>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
             <td>MAPE</td>
             <td>=</td>
             <td>
-                (1 ÷ n) × Σ(i=1 to n) |(y<sub>i</sub> − ŷ<sub>i</sub>) ÷ y<sub>i</sub>| × 100%
+                (1 ÷ n) × Σ|(y<sub>i</sub> − ŷ<sub>i</sub>) ÷ y<sub>i</sub>| × 100%
             </td>
         </tr>
         <tr>
@@ -128,7 +128,7 @@
             <td></td>
             <td>=</td>
             <td>
-                1 - <span class="font-semibold">{{ number_format($r2LeftRight, 4) }}</span>
+                <span class="font-semibold">1 - {{ number_format($r2LeftRight, 4) }}</span>
             </td>
         </tr>
         <tr>

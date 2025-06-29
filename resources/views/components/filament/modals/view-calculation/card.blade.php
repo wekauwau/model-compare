@@ -7,7 +7,7 @@
             <td>AE</td>
             <td>=</td>
             <td>
-                |A − P|
+                |y<sub>i</sub> − ŷ<sub>i</sub>|
             </td>
         </tr>
         <tr>
@@ -31,7 +31,7 @@
             <td>APE</td>
             <td>=</td>
             <td>
-                |A − P| ÷ A × 100%
+                |y<sub>i</sub> − ŷ<sub>i</sub>| ÷ y<sub>i</sub> × 100%
             </td>
         </tr>
         <tr>

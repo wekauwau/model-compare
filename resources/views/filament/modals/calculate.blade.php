@@ -1,5 +1,5 @@
 @if ($cars->count() < 2)
-    <span class="text-xl font-semibold text-red-600">You need to select two or more rows to calculate!</span>
+    <span class="text-xl font-semibold text-red-600">Pilih dua baris atau lebih untuk menghitung!</span>
 @else
     @php
         $n = $cars->count();
@@ -303,29 +303,38 @@
         <table>
             <tr>
                 <td>
-                    <span class="text-xl font-semibold">y<sub>i</sub></span>
+                    <span class="text-xl font-semibold leading-none">n</span>
                 </td>
-                <td>=</td>
+                <td class="px-1">=</td>
                 <td>
-                    Actual price
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <span class="text-xl font-semibold">ŷ<sub>i</sub></span>
-                </td>
-                <td>=</td>
-                <td>
-                    Predicted price
+                    Jumlah data
                 </td>
             </tr>
             <tr>
                 <td>
-                    <span class="text-xl font-semibold">ȳ</span>
+                    <span class="text-xl font-semibold leading-none">y<sub>i</sub></span>
                 </td>
-                <td>=</td>
+                <td class="px-1">=</td>
                 <td>
-                    Mean of actual price
+                    Harga aktual
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="text-xl font-semibold leading-none">ŷ<sub>i</sub></span>
+                </td>
+                <td class="px-1">=</td>
+                <td>
+                    Harga prediksi
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span class="text-xl font-semibold leading-none">ȳ</span>
+                </td>
+                <td class="px-1">=</td>
+                <td>
+                    Rata-rata harga aktual
                 </td>
             </tr>
         </table>

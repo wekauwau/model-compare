@@ -175,11 +175,11 @@ class InputTable extends Component implements HasTable, HasForms
     {
         return [
             Action::make('viewCalculation')
-                ->label('View')
+                ->label('Detail')
                 ->button()
                 ->color('warning')
                 ->icon('heroicon-o-eye')
-                ->modalHeading('Calculation Detail')
+                ->modalHeading('Detail Perhitungan')
                 ->modalContent(fn ($record) => view('filament.modals.view-calculation', [
                     'car' => $record,
                 ]))
@@ -193,9 +193,9 @@ class InputTable extends Component implements HasTable, HasForms
     {
         return [
             BulkAction::make('calculate')
-                ->label('Calculate')
+                ->label('Hitung')
                 ->icon('heroicon-o-document-text')
-                ->modalHeading('Calculate MAE, MAPE, and R²')
+                ->modalHeading('Hitung MAE, MAPE, dan R²')
                 ->modalContent(fn ($records) => view('filament.modals.calculate', [
                     'cars' => $records,
                 ]))
@@ -208,7 +208,7 @@ class InputTable extends Component implements HasTable, HasForms
     {
         return $table
             ->query($this->getQuery())
-            ->heading("Input From Users")
+            ->heading("Input Dari User")
             ->striped()
             ->checkIfRecordIsSelectableUsing(fn ($record) => !is_null($record->dataset_price))
             ->columns($this->getColumns())

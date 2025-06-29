@@ -7,7 +7,7 @@
         </button>
         <button wire:click="setMode('sample')"
             class="px-4 py-2 border-2 rounded-lg hover:bg-blue-500 hover:border-blue-500 hover:text-white {{ $mode === 'sample' ? 'bg-blue-500 border-blue-500 text-white' : 'bg-white border-gray-400 ' }}">
-            Sample
+            Sampel
         </button>
     </div>
 

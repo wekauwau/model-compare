@@ -1,4 +1,4 @@
-<h1 class="text-2xl font-bold mb-6 text-gray-800">Model Prediction Comparison</h1>
+<h1 class="text-2xl font-bold mb-6 text-gray-800">Perbandingan Model Prediksi Harga Mobil Bekas</h1>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="bg-blue-50 border-2 border-blue-600 rounded-2xl shadow p-6">
@@ -20,9 +20,9 @@
                 <td><span class="font-semibold text-cyan-600">0.92</span></td>
             </tr>
             <tr>
-                <td><span class="font-medium">Training Time</span></td>
+                <td><span class="font-medium">Waktu Training</span></td>
                 <td> : </td>
-                <td><span class="font-semibold">28m</span></td>
+                <td><span class="font-semibold">28 menit</span></td>
             </tr>
         </table>
     </div>
@@ -46,9 +46,9 @@
                 <td><span class="font-semibold text-cyan-600">0.86</span></td>
             </tr>
             <tr>
-                <td><span class="font-medium">Training Time</span></td>
+                <td><span class="font-medium">Waktu Training</span></td>
                 <td> : </td>
-                <td><span class="font-semibold">27s</span></td>
+                <td><span class="font-semibold">27 detik</span></td>
             </tr>
         </table>
     </div>
@@ -72,9 +72,9 @@
                 <td><span class="font-semibold text-cyan-600">0.84</span></td>
             </tr>
             <tr>
-                <td><span class="font-medium">Training Time</span></td>
+                <td><span class="font-medium">Waktu Training</span></td>
                 <td> : </td>
-                <td><span class="font-semibold">9s</span></td>
+                <td><span class="font-semibold">9 detik</span></td>
             </tr>
         </table>
     </div>

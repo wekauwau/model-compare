@@ -23,14 +23,22 @@
 <div>
     <table>
         <tr>
-            <td>A</td>
-            <td>=</td>
-            <td>Actual price</td>
+            <td>
+                <span class="text-xl font-semibold leading-none">y<sub>i</sub></span>
+            </td>
+            <td class="px-1">=</td>
+            <td>
+                Harga aktual
+            </td>
         </tr>
         <tr>
-            <td>P</td>
-            <td>=</td>
-            <td>Predicted price</td>
+            <td>
+                <span class="text-xl font-semibold leading-none">ŷ<sub>i</sub></span>
+            </td>
+            <td class="px-1">=</td>
+            <td>
+                Harga prediksi
+            </td>
         </tr>
     </table>
 
