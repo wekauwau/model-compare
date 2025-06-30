@@ -84,7 +84,7 @@ class InputTable extends Component implements HasTable, HasForms
             TextColumn::make('dataset_price')
                 ->label("Price (optional)")
                 ->searchable()
-                ->money('USD')
+                ->formatStateUsing(fn ($state) => '$' . number_format($state, 2))
                 ->weight(FontWeight::SemiBold)
                 ->alignEnd(),
             TextColumn::make('predictedPrice.rf')
@@ -209,6 +209,7 @@ class InputTable extends Component implements HasTable, HasForms
         return $table
             ->query($this->getQuery())
             ->heading("Input Dari User")
+            ->description("Harga dan prediksi harga ditampilkan dalam Dolar AS (USD).")
             ->striped()
             ->checkIfRecordIsSelectableUsing(fn ($record) => !is_null($record->dataset_price))
             ->columns($this->getColumns())
