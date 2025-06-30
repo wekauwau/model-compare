@@ -8,6 +8,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Support\RawJs;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -87,7 +88,15 @@ class InputTableActions
                                 'lgbm' => $data['lgbm'],
                             ]);
                         }
-                    })
+                    }),
+                DeleteAction::make()
+                    ->button()
+                    ->label('Hapus')
+                    ->icon('heroicon-o-trash')
+                    ->color('danger')
+                    ->modalHeading('Hapus Data')
+                    ->modalDescription("Apakah Anda yakin?")
+                    ->modalSubmitActionLabel("Ya, hapus"),
             ])
         ];
     }
