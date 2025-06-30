@@ -96,7 +96,10 @@ class InputTableActions
                     ->color('danger')
                     ->modalHeading('Hapus Data')
                     ->modalDescription("Apakah Anda yakin?")
-                    ->modalSubmitActionLabel("Ya, hapus"),
+                    ->modalSubmitActionLabel("Ya, hapus")
+                    ->before(function (Car $record) {
+                        $record->predictedPrice()?->delete();
+                    }),
             ])
         ];
     }

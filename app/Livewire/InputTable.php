@@ -4,11 +4,11 @@ namespace App\Livewire;
 
 use App\Models\Car;
 use App\Support\InputTableActions;
+use App\Support\InputTableBulkActions;
 use App\Support\InputTableColumns;
 use App\Support\InputTableHeaderActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
@@ -28,21 +28,6 @@ class InputTable extends Component implements HasTable, HasForms
             ->orderByDesc('id');
     }
 
-    private function getBulkActions()
-    {
-        return [
-            BulkAction::make('calculate')
-                ->label('Hitung')
-                ->icon('heroicon-o-document-text')
-                ->modalHeading('Hitung MAE, MAPE, dan R²')
-                ->modalContent(fn ($records) => view('filament.modals.calculate', [
-                    'cars' => $records,
-                ]))
-                ->modalSubmitAction(false)
-                ->modalCancelAction(false)
-        ];
-    }
-
     public function table(Table $table): Table
     {
         return $table
@@ -53,7 +38,7 @@ class InputTable extends Component implements HasTable, HasForms
             ->checkIfRecordIsSelectableUsing(fn (Car $record) => !is_null($record->dataset_price))
             ->columns(InputTableColumns::get())
             ->headerActions(InputTableHeaderActions::get())
-            ->bulkActions($this->getBulkActions())
+            ->bulkActions(InputTableBulkActions::get())
             ->actions(InputTableActions::get());
     }
 
