@@ -49,13 +49,10 @@ class InputTableActions
                             || $record->wasChanged('type')
                             || $record->wasChanged('paint_color')
                             || $record->wasChanged('state')
-                            || $record->wasChanged('age')
-                            || $record->wasChanged('dataset_price');
+                            || $record->wasChanged('age');
 
                         // Only proceed if dataset_price is not null
-                        if ($changed && !is_null($record->dataset_price)) {
-                            Log::info('recalculate prediction!');
-
+                        if ($changed) {
                             $response = Http::post('https://a760-35-204-56-140.ngrok-free.app/predict', [
                                 'region' => $record->region,
                                 'manufacturer' => $record->manufacturer,
