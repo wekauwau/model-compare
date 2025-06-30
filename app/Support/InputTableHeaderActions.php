@@ -17,6 +17,7 @@ class InputTableHeaderActions
         return [
             CreateAction::make()
                 ->label('Input Data')
+                ->icon('heroicon-o-plus')
                 ->modalHeading('Input data mobil')
                 ->form([
                     Select::make('region')

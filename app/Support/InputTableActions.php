@@ -11,7 +11,6 @@ use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Log;
 
 class InputTableActions
 {
@@ -98,6 +97,9 @@ class InputTableActions
                         $record->predictedPrice()?->delete();
                     }),
             ])
+            ->label("Aksi")
+            ->color('primary')
+            ->button()
         ];
     }
 
