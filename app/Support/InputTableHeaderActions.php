@@ -95,8 +95,8 @@ class InputTableHeaderActions
                         ->mask(RawJs::make('$money($input)'))
                         ->stripCharacters(',')
                 ])
-                ->after(function (array $data, Car $car) {
-                    $response = Http::post('https://0222-34-127-11-18.ngrok-free.app/predict', [
+                ->after(function (array $data, Car $record) {
+                    $response = Http::post('https://a760-35-204-56-140.ngrok-free.app/predict', [
                         'region' => $data['region'],
                         'manufacturer' => $data['manufacturer'],
                         'cylinders' => $data['cylinders'],
@@ -110,7 +110,6 @@ class InputTableHeaderActions
                         'age' => (int) $data['age'],
                     ]);
 
-                    // Check if API response is valid
                     if ($response->successful()) {
                         $data['rf'] = $response->json('random_forest');
                         $data['xgb'] = $response->json('xgboost');
@@ -123,7 +122,7 @@ class InputTableHeaderActions
                         );
                     }
 
-                    $data['car_id'] = $car->getKey();
+                    $data['car_id'] = $record->getKey();
                     PredictedPrice::create($data);
                 })
         ];
