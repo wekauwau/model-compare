@@ -84,7 +84,7 @@ class ExampleTable extends Component implements HasTable, HasForms
             TextColumn::make('dataset_price')
                 ->label("Price")
                 ->searchable()
-                ->money('USD')
+                ->formatStateUsing(fn ($state) => '$' . number_format($state, 2))
                 ->weight(FontWeight::SemiBold)
                 ->alignEnd(),
             TextColumn::make('predictedPrice.rf')
@@ -184,6 +184,7 @@ class ExampleTable extends Component implements HasTable, HasForms
         return $table
             ->query($this->getQuery())
             ->heading("Sampel dari dataset")
+            ->description("Harga dan prediksi harga ditampilkan dalam Dolar AS (USD).")
             ->striped()
             ->columns($this->getColumns())
             ->filters([])

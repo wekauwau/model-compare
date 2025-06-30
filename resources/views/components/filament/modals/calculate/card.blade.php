@@ -138,5 +138,15 @@
                 <span class="font-semibold text-cyan-600">{{ number_format($r2, 4) }}</span>
             </td>
         </tr>
+        @if ($r2 < 0)
+            <tr>
+                <td></td>
+                <td colspan="2">
+                    <span class="text-red-600 font-semibold">
+                        Prediksi buruk, lebih buruk daripada hanya menggunakan nilai rata-rata.
+                    </span>
+                </td>
+            </tr>
+        @endif
     </table>
 </div>
