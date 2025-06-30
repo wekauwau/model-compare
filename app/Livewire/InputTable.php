@@ -3,15 +3,22 @@
 namespace App\Livewire;
 
 use App\Models\Car;
+use App\Models\PredictedPrice;
+use App\Support\DatasetOptions;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Support\Enums\FontWeight;
+use Filament\Support\RawJs;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\BulkAction;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class InputTable extends Component implements HasTable, HasForms
@@ -82,7 +89,7 @@ class InputTable extends Component implements HasTable, HasForms
                 ->searchable()
                 ->alignEnd(),
             TextColumn::make('dataset_price')
-                ->label("Price (optional)")
+                ->label("Price (opsional)")
                 ->searchable()
                 ->formatStateUsing(fn ($state) => '$' . number_format($state, 2))
                 ->weight(FontWeight::SemiBold)
@@ -171,6 +178,21 @@ class InputTable extends Component implements HasTable, HasForms
         ];
     }
 
+    private function getBulkActions()
+    {
+        return [
+            BulkAction::make('calculate')
+                ->label('Hitung')
+                ->icon('heroicon-o-document-text')
+                ->modalHeading('Hitung MAE, MAPE, dan R²')
+                ->modalContent(fn ($records) => view('filament.modals.calculate', [
+                    'cars' => $records,
+                ]))
+                ->modalSubmitAction(false)
+                ->modalCancelAction(false)
+        ];
+    }
+
     private function getActions()
     {
         return [
@@ -189,18 +211,120 @@ class InputTable extends Component implements HasTable, HasForms
             ];
     }
 
-    private function getBulkActions()
+    private function getHeaderActions()
     {
         return [
-            BulkAction::make('calculate')
-                ->label('Hitung')
-                ->icon('heroicon-o-document-text')
-                ->modalHeading('Hitung MAE, MAPE, dan R²')
-                ->modalContent(fn ($records) => view('filament.modals.calculate', [
-                    'cars' => $records,
-                ]))
-                ->modalSubmitAction(false)
-                ->modalCancelAction(false)
+            CreateAction::make()
+                ->label('Input Data')
+                ->modalHeading('Input data mobil')
+                ->form([
+                    Select::make('region')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::regions())
+                        ->required(),
+                    Select::make('state')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::states())
+                        ->required(),
+                    Select::make('manufacturer')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::manufacturers())
+                        ->required(),
+                    Select::make('paint_color')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::paintColors())
+                        ->required(),
+                    Select::make('fuel')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::fuels())
+                        ->required(),
+                    Select::make('cylinders')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::cylinders())
+                        ->required(),
+                    TextInput::make('odometer')
+                        ->mask(RawJs::make('$money($input, \'.\', \',\', 0)'))
+                        ->numeric()
+                        ->minValue(1)
+                        ->stripCharacters(',')
+                        ->required(),
+                    Select::make('transmission')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::transmissions())
+                        ->required(),
+                    Select::make('drive')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::drives())
+                        ->required(),
+                    Select::make('type')
+                        ->native(false)
+                        ->lazy()
+                        ->searchable()
+                        ->options(fn () => DatasetOptions::types())
+                        ->required(),
+                    TextInput::make('age')
+                        ->helperText('Tahun penawaran - tahun pembelian baru.')
+                        ->mask(RawJs::make('$money($input, \'.\', \',\', 0)'))
+                        ->numeric()
+                        ->minValue(1)
+                        ->stripCharacters(',')
+                        ->required(),
+                    TextInput::make('dataset_price')
+                        ->label('Price (Opsional)')
+                        ->helperText('Masukkan harga dalam Dolar AS')
+                        ->numeric()
+                        ->minValue(1)
+                        ->prefix('$')
+                        ->mask(RawJs::make('$money($input)'))
+                        ->stripCharacters(',')
+                ])
+                ->after(function (array $data, Car $car) {
+                    $response = Http::post('https://0222-34-127-11-18.ngrok-free.app/predict', [
+                        'region' => $data['region'],
+                        'manufacturer' => $data['manufacturer'],
+                        'cylinders' => $data['cylinders'],
+                        'fuel' => $data['fuel'],
+                        'odometer' => (int) $data['odometer'],
+                        'transmission' => $data['transmission'],
+                        'drive' => $data['drive'],
+                        'type' => $data['type'],
+                        'paint_color' => $data['paint_color'],
+                        'state' => $data['state'],
+                        'age' => (int) $data['age'],
+                    ]);
+
+                    // Check if API response is valid
+                    if ($response->successful()) {
+                        $data['rf'] = $response->json('random_forest');
+                        $data['xgb'] = $response->json('xgboost');
+                        $data['lgbm'] = $response->json('lightgbm');
+                    } else {
+                        throw new \Exception(
+                            'Failed to get prediction from API. ' .
+                                    'Status: ' . $response->status() . "\n" .
+                                    'Body: ' . $response->body()
+                        );
+                    }
+
+                    $data['car_id'] = $car->getKey();
+                    PredictedPrice::create($data);
+                })
         ];
     }
 
@@ -214,8 +338,9 @@ class InputTable extends Component implements HasTable, HasForms
             ->checkIfRecordIsSelectableUsing(fn ($record) => !is_null($record->dataset_price))
             ->columns($this->getColumns())
             ->filters([])
-            ->actions($this->getActions())
-            ->bulkActions($this->getBulkActions());
+            ->headerActions($this->getHeaderActions())
+            ->bulkActions($this->getBulkActions())
+            ->actions($this->getActions());
     }
 
     public function render()
