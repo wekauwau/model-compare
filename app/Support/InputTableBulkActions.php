@@ -2,7 +2,6 @@
 
 namespace App\Support;
 
-use App\Models\Car;
 use App\Models\PredictedPrice;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Actions\DeleteBulkAction;
