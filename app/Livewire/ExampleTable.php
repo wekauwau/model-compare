@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Car;
 use App\Support\ExampleTableColumns;
+use App\Support\ExampleTableHeaderActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Actions\Action;
@@ -67,7 +68,7 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->description("Harga dan prediksi harga ditampilkan dalam Dolar AS (USD).")
             ->striped()
             ->columns(ExampleTableColumns::get())
-            ->filters([])
+            ->headerActions(ExampleTableHeaderActions::get())
             ->actions($this->getActions())
             ->bulkActions($this->getBulkActions());
     }
