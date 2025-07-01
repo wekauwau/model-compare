@@ -1,5 +1,7 @@
 @if ($cars->count() < 2)
     <span class="text-xl font-semibold text-red-600">Pilih dua baris atau lebih untuk menghitung!</span>
+@elseif ($cars->contains(fn ($car) => is_null($car->dataset_price)))
+    <span class="text-xl font-semibold text-red-600">Perhitungan akurasi hanya bisa dilakukan pada baris yang memiliki harga aktual!</span>
 @else
     @php
         $n = $cars->count();

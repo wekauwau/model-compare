@@ -11,7 +11,9 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
 class InputTable extends Component implements HasTable, HasForms
@@ -35,11 +37,22 @@ class InputTable extends Component implements HasTable, HasForms
             ->heading("Input Dari User")
             ->description("Harga dan prediksi harga ditampilkan dalam Dolar AS (USD).")
             ->striped()
-            ->checkIfRecordIsSelectableUsing(fn (Car $record) => !is_null($record->dataset_price))
             ->columns(InputTableColumns::get())
             ->headerActions(InputTableHeaderActions::get())
             ->bulkActions(InputTableBulkActions::get())
-            ->actions(InputTableActions::get());
+            ->actions(InputTableActions::get())
+            ->filters([
+                TernaryFilter::make('actualPrice')
+                    ->label('Harga aktual')
+                    ->placeholder('Semua data')
+                    ->trueLabel('Data dengan harga aktual')
+                    ->falseLabel('Data tanpa harga aktual')
+                    ->queries(
+                        true: fn (Builder $query) => $query->whereNotNull('dataset_price'),
+                        false: fn (Builder $query) => $query->whereNull('dataset_price'),
+                        blank: fn (Builder $query) => $query,
+                    )
+            ]);
     }
 
     public function render()
