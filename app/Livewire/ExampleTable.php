@@ -3,13 +3,12 @@
 namespace App\Livewire;
 
 use App\Models\Car;
+use App\Support\ExampleTableActions;
 use App\Support\ExampleTableBulkActions;
 use App\Support\ExampleTableColumns;
 use App\Support\ExampleTableHeaderActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
@@ -29,23 +28,6 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->orderByDesc('id');
     }
 
-    private function getActions()
-    {
-        return [
-            Action::make('viewCalculation')
-                ->label('Detail')
-                ->button()
-                ->color('warning')
-                ->icon('heroicon-o-eye')
-                ->modalHeading('Detail perhitungan')
-                ->modalContent(fn ($record) => view('filament.modals.view-calculation', [
-                    'car' => $record,
-                ]))
-                ->modalSubmitAction(false)
-                ->modalCancelAction(false)
-            ];
-    }
-
     public function table(Table $table): Table
     {
         return $table
@@ -56,7 +38,7 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->columns(ExampleTableColumns::get())
             ->headerActions(ExampleTableHeaderActions::get())
             ->bulkActions(ExampleTableBulkActions::get())
-            ->actions($this->getActions());
+            ->actions(ExampleTableActions::get());
     }
 
     public function render()

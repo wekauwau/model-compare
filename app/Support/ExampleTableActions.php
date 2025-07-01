@@ -9,28 +9,26 @@ use Filament\Support\Enums\MaxWidth;
 use Filament\Support\RawJs;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
-use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Support\Facades\Http;
 
-class InputTableActions
+class ExampleTableActions
 {
     public static function get()
     {
         return [
             ActionGroup::make([
                 Action::make('viewCalculation')
-                    ->button()
                     ->label('Detail')
+                    ->button()
+                    ->color('warning')
                     ->icon('heroicon-o-eye')
-                    ->color('info')
-                    ->modalHeading('Detail Perhitungan')
+                    ->modalHeading('Detail perhitungan')
                     ->modalContent(fn ($record) => view('filament.modals.view-calculation', [
                         'car' => $record,
                     ]))
                     ->modalSubmitAction(false)
-                    ->modalCancelAction(false)
-                    ->visible(fn ($record) => !is_null($record->dataset_price)),
+                    ->modalCancelAction(false),
                 EditAction::make()
                     ->button()
                     ->label('Ubah')
@@ -52,7 +50,7 @@ class InputTableActions
                             || $record->wasChanged('age');
 
                         if ($changed) {
-                            $response = Http::post('https://a760-35-204-56-140.ngrok-free.app/predict', [
+                            $response = Http::post('https://e6b1-34-16-240-167.ngrok-free.app/predict', [
                                 'region' => $record->region,
                                 'manufacturer' => $record->manufacturer,
                                 'cylinders' => $record->cylinders,
@@ -85,20 +83,9 @@ class InputTableActions
                             ]);
                         }
                     }),
-                DeleteAction::make()
-                    ->button()
-                    ->label('Hapus')
-                    ->icon('heroicon-o-trash')
-                    ->color('danger')
-                    ->modalHeading('Hapus Data')
-                    ->modalDescription("Apakah Anda yakin?")
-                    ->modalSubmitActionLabel("Ya, hapus")
-                    ->before(function (Car $record) {
-                        $record->predictedPrice()?->delete();
-                    }),
             ])
             ->color('primary')
-            ->dropdownWidth(MaxWidth::ExtraSmall)
+            ->dropdownWidth(MaxWidth::ExtraSmall),
         ];
     }
 
@@ -180,6 +167,7 @@ class InputTableActions
                 ->prefix('$')
                 ->mask(RawJs::make('$money($input)'))
                 ->stripCharacters(',')
+                ->required(),
         ];
     }
 }
