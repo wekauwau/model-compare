@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Car;
+use App\Support\ExampleTableBulkActions;
 use App\Support\ExampleTableColumns;
 use App\Support\ExampleTableHeaderActions;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -45,21 +46,6 @@ class ExampleTable extends Component implements HasTable, HasForms
             ];
     }
 
-    private function getBulkActions()
-    {
-        return [
-            BulkAction::make('calculate')
-                ->label('Calculate')
-                ->icon('heroicon-o-document-text')
-                ->modalHeading('Calculate MAE, MAPE, and R²')
-                ->modalContent(fn ($records) => view('filament.modals.calculate', [
-                    'cars' => $records,
-                ]))
-                ->modalSubmitAction(false)
-                ->modalCancelAction(false)
-            ];
-    }
-
     public function table(Table $table): Table
     {
         return $table
@@ -69,8 +55,8 @@ class ExampleTable extends Component implements HasTable, HasForms
             ->striped()
             ->columns(ExampleTableColumns::get())
             ->headerActions(ExampleTableHeaderActions::get())
-            ->actions($this->getActions())
-            ->bulkActions($this->getBulkActions());
+            ->bulkActions(ExampleTableBulkActions::get())
+            ->actions($this->getActions());
     }
 
     public function render()
