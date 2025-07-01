@@ -9,6 +9,7 @@ use Filament\Support\Enums\MaxWidth;
 use Filament\Support\RawJs;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
 use Illuminate\Support\Facades\Http;
 
@@ -82,6 +83,17 @@ class ExampleTableActions
                                 'lgbm' => $data['lgbm'],
                             ]);
                         }
+                    }),
+                DeleteAction::make()
+                    ->button()
+                    ->label('Hapus')
+                    ->icon('heroicon-o-trash')
+                    ->color('danger')
+                    ->modalHeading('Hapus Data')
+                    ->modalDescription("Apakah Anda yakin?")
+                    ->modalSubmitActionLabel("Ya, hapus")
+                    ->before(function (Car $record) {
+                        $record->predictedPrice()?->delete();
                     }),
             ])
             ->color('primary')
