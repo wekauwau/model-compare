@@ -5,6 +5,7 @@ namespace App\Support;
 use App\Models\Car;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Support\RawJs;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
@@ -97,9 +98,8 @@ class InputTableActions
                         $record->predictedPrice()?->delete();
                     }),
             ])
-            ->label("Aksi")
             ->color('primary')
-            ->button()
+            ->dropdownWidth(MaxWidth::ExtraSmall)
         ];
     }
 
