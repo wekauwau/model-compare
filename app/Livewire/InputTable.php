@@ -27,7 +27,7 @@ class InputTable extends Component implements HasTable, HasForms
             ->when(true, function ($query) {
                 $query->where('from_dataset', false)->with('predictedPrice');
             })
-            ->orderByDesc('id');
+            ->orderByDesc('car_id');
     }
 
     public function table(Table $table): Table

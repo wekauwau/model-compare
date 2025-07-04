@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PredictedPrice extends Model
 {
+    protected $primaryKey = 'predicted_price_id';
+
     protected $fillable = [
         'car_id',
         'rf',
@@ -15,6 +17,6 @@ class PredictedPrice extends Model
 
     public function car()
     {
-        return $this->belongsTo(Car::class);
+        return $this->belongsTo(Car::class, 'car_id', 'car_id');
     }
 }

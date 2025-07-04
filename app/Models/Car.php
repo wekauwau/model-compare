@@ -9,6 +9,8 @@ class Car extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'car_id';
+
     protected $fillable = [
         'region',
         'manufacturer',
@@ -27,6 +29,6 @@ class Car extends Model
 
     public function predictedPrice()
     {
-        return $this->hasOne(PredictedPrice::class);
+        return $this->hasOne(PredictedPrice::class, 'car_id', 'car_id');
     }
 }

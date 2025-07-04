@@ -8,8 +8,11 @@ return new class () extends Migration {
     public function up(): void
     {
         Schema::create('predicted_prices', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('car_id');
+            $table->id('predicted_price_id');
+            $table->foreignId('car_id')->constrained(
+                table:'cars',
+                column:'car_id',
+            );
             $table->float('rf');
             $table->float('xgb');
             $table->float('lgbm');
