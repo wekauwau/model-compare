@@ -48,7 +48,7 @@
             <tr>
                 <td><span class="font-medium">Waktu Training</span></td>
                 <td> : </td>
-                <td><span class="font-semibold">27 detik</span></td>
+                <td><span class="font-semibold">21 detik</span></td>
             </tr>
         </table>
     </div>
@@ -74,7 +74,7 @@
             <tr>
                 <td><span class="font-medium">Waktu Training</span></td>
                 <td> : </td>
-                <td><span class="font-semibold">9 detik</span></td>
+                <td><span class="font-semibold">5 detik</span></td>
             </tr>
         </table>
     </div>
