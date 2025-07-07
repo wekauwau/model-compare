@@ -52,7 +52,7 @@ class InputTableActions
                             || $record->wasChanged('age');
 
                         if ($changed) {
-                            $response = Http::post('https://a760-35-204-56-140.ngrok-free.app/predict', [
+                            $response = Http::post('https://ff0f-34-138-116-79.ngrok-free.app/predict', [
                                 'region' => $record->region,
                                 'manufacturer' => $record->manufacturer,
                                 'cylinders' => $record->cylinders,

@@ -97,7 +97,7 @@ class InputTableHeaderActions
                         ->stripCharacters(',')
                 ])
                 ->after(function (array $data, Car $record) {
-                    $response = Http::post('https://a760-35-204-56-140.ngrok-free.app/predict', [
+                    $response = Http::post('https://ff0f-34-138-116-79.ngrok-free.app/predict', [
                         'region' => $data['region'],
                         'manufacturer' => $data['manufacturer'],
                         'cylinders' => $data['cylinders'],

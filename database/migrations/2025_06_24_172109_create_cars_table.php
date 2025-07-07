@@ -9,6 +9,10 @@ return new class () extends Migration {
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->id('car_id');
+            $table->foreignId('user_id')->constrained(
+                table: 'users',
+                column: 'user_id',
+            );
             $table->string('region');
             $table->string('manufacturer');
             $table->string('cylinders');

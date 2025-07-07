@@ -12,6 +12,7 @@ class Car extends Model
     protected $primaryKey = 'car_id';
 
     protected $fillable = [
+        'user_id',
         'region',
         'manufacturer',
         'cylinders',
@@ -26,6 +27,11 @@ class Car extends Model
         'from_dataset',
         'dataset_price',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
+    }
 
     public function predictedPrice()
     {
