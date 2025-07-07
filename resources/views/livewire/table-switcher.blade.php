@@ -11,10 +11,19 @@
         </button>
     </div>
 
-    {{-- Dynamic Component --}}
-    @if ($mode === 'input')
-        @livewire('input-table')
-    @else
-        @livewire('example-table')
+    @if (auth()->check())
+        @if (auth()->user()->type === 'admin')
+            @if ($mode === 'input')
+                @livewire('admin-input-table')
+            @else
+                @livewire('admin-example-table')
+            @endif
+        @elseif (auth()->user()->type === 'user')
+            @if ($mode === 'input')
+                @livewire('input-table')
+            @else
+                @livewire('example-table')
+            @endif
+        @endif
     @endif
 </div>
