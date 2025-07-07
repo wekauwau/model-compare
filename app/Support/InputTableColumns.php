@@ -68,81 +68,39 @@ class InputTableColumns
                 ->weight(FontWeight::SemiBold)
                 ->alignEnd(),
             TextColumn::make('predictedPrice.rf')
-                ->label("RF")
+                ->label("Prediksi 1")
                 ->searchable()
                 ->getStateUsing(function (Car $record) {
-                    if (is_null($record->dataset_price)) {
-                        $predicted = number_format($record->predictedPrice->rf ?? 0, 2);
+                    $predicted = number_format($record->predictedPrice->rf ?? 0, 2);
 
-                        return <<<HTML
-                            <div class='text-blue-600'>$$predicted</div>
-                        HTML;
-                    }
-
-                    $actual = $record->dataset_price ?? 0;
-                    $predicted = $record->predictedPrice->rf ?? 0;
-                    $mae = number_format(abs($predicted - $actual), 2);
-                    $mape = number_format(abs(($actual - $predicted) / $actual) * 100, 2);
-
-                    $predicted = number_format($predicted, 2);
                     return <<<HTML
                         <div class='text-blue-600'>$$predicted</div>
-                        <div class='text-red-600'>$mae</div>
-                        <div class='text-purple-600'>$mape%</div>
                     HTML;
                 })
                 ->html()
                 ->weight(FontWeight::SemiBold)
                 ->alignEnd(),
             TextColumn::make('predictedPrice.xgb')
-                ->label("XGB")
+                ->label("Prediksi 2")
                 ->searchable()
                 ->getStateUsing(function (Car $record) {
-                    if (is_null($record->dataset_price)) {
-                        $predicted = number_format($record->predictedPrice->xgb ?? 0, 2);
+                    $predicted = number_format($record->predictedPrice->xgb ?? 0, 2);
 
-                        return <<<HTML
-                            <div class='text-green-600'>$$predicted</div>
-                        HTML;
-                    }
-
-                    $actual = $record->dataset_price ?? 0;
-                    $predicted = $record->predictedPrice->xgb ?? 0;
-                    $mae = number_format(abs($predicted - $actual), 2);
-                    $mape = number_format(abs(($actual - $predicted) / $actual) * 100, 2);
-
-                    $predicted = number_format($predicted, 2);
                     return <<<HTML
                         <div class='text-green-600'>$$predicted</div>
-                        <div class='text-red-600'>$mae</div>
-                        <div class='text-purple-600'>$mape%</div>
                     HTML;
                 })
                 ->html()
                 ->weight(FontWeight::SemiBold)
                 ->alignEnd(),
             TextColumn::make('predictedPrice.lgbm')
-                ->label("LGBM")
+                ->label("Prediksi 3")
                 ->searchable()
                 ->getStateUsing(function (Car $record) {
-                    if (is_null($record->dataset_price)) {
-                        $predicted = number_format($record->predictedPrice->lgbm ?? 0, 2);
+                    $predicted = number_format($record->predictedPrice->lgbm ?? 0, 2);
 
-                        return <<<HTML
-                            <div class='text-yellow-600'>$$predicted</div>
-                        HTML;
-                    }
-
-                    $actual = $record->dataset_price ?? 0;
-                    $predicted = $record->predictedPrice->lgbm ?? 0;
-                    $mae = number_format(abs($predicted - $actual), 2);
-                    $mape = number_format(abs(($actual - $predicted) / $actual) * 100, 2);
-
-                    $predicted = number_format($predicted, 2);
                     return <<<HTML
                         <div class='text-yellow-600'>$$predicted</div>
-                        <div class='text-red-600'>$mae</div>
-                        <div class='text-purple-600'>$mape%</div>
                     HTML;
                 })
                 ->html()

@@ -25,7 +25,9 @@ class InputTable extends Component implements HasTable, HasForms
     {
         return Car::query()
             ->when(true, function ($query) {
-                $query->where('from_dataset', false)->with('predictedPrice');
+                $query->where('from_dataset', false)
+                    ->where('user_id', auth()->id())
+                    ->with('predictedPrice');
             })
             ->orderByDesc('car_id');
     }
@@ -34,8 +36,8 @@ class InputTable extends Component implements HasTable, HasForms
     {
         return $table
             ->query($this->getQuery())
-            ->heading("Input Dari User")
-            ->description("Harga dan prediksi harga ditampilkan dalam Dolar AS (USD).")
+            ->heading("Data Mobil")
+            ->description("Harga dan prediksi harga ditampilkan dalam Dolar AS (USD).\nassa")
             ->striped()
             ->columns(InputTableColumns::get())
             ->headerActions(InputTableHeaderActions::get())
