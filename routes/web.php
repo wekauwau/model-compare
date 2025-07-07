@@ -11,17 +11,9 @@ Route::get('/signup', [RegisterController::class, 'showRegistrationForm'])->name
 Route::post('/signup', [RegisterController::class, 'register'])->name('signup.post');
 
 Route::get('/', function () {
-    return view('test')->name('dashboard-user');
-});
-
-// Route::get('/dashboard-admin', function () {
-//     return 'Welcome, Admin!';
-// })->name('dashboard-admin')->middleware('auth');
-
-Route::get('/', function () {
-    return 'Welcome, User!';
+    return view('dashboard-user');
 })->name('dashboard-user')->middleware('auth');
 
-// Route::get('/login', function () {
-//     return view('login')->name('login');
-// });
+Route::get('/admin', function () {
+    return view('dashboard-admin-user');
+})->name('dashboard-admin')->middleware('auth');

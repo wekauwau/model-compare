@@ -9,6 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $primaryKey = 'user_id';
+
     protected $fillable = [
         'type',
         'name',
@@ -32,6 +34,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function username()
+    {
+        return 'username';
     }
 
     public function car()
