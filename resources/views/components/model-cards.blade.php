@@ -1,4 +1,13 @@
-<h1 class="text-2xl font-bold mb-6 text-gray-800">Perbandingan Model Prediksi Harga Mobil Bekas</h1>
+<div class="flex flex-row justify-between">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800">Perbandingan Model Prediksi Harga Mobil Bekas</h1>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit"
+            class="inline-flex items-center px-4 py-2 bg-red-600 text-white text-sm font-medium rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+            Logout
+        </button>
+    </form>
+</div>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
     <div class="bg-blue-50 border-2 border-blue-600 rounded-2xl shadow p-6">
